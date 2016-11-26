@@ -31,10 +31,11 @@ $noteUpload = trim($_POST['notes']);
 
     $configs = include('config.php');
 
-    $username = $configs.['username'];
-    $password = $configs.['password'];
-    $hostname = $configs.['host']; 
-    $database = $configs.['databse'];
+    $username = $configs['username'];
+    $password = $configs['password'];
+    $hostname = $configs['host']; 
+    $database = $configs['database'];
+    
     
 //connecting to server and creating link to database
 $link = mysqli_connect($hostname, $username, $password, $database);

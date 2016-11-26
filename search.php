@@ -7,13 +7,14 @@ if (!empty($_POST["keyname"])) {
     $searchTerm = trim($_POST['keyname']);
 } else echo "<script>alert('Please pass a name.')</script>";
 
-$configs = include('config.php');
+    $configs = include('config.php');
 
-//database connection info
-    $username = $configs.['username'];
-    $password = $configs.['password'];
-    $hostname = $configs.['host']; 
-    $database = $configs.['databse'];
+    //database connection info
+    $username = $configs['username'];
+    $password = $configs['password'];
+    $hostname = $configs['host']; 
+    $database = $configs['database'];
+    
  //connecting to server and creating link to database
 $link = mysqli_connect($hostname, $username, $password, $database);
 
