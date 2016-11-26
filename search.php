@@ -67,7 +67,7 @@ echo
       function drawChart() {
           var data = new google.visualization.DataTable(";
           
-          echo $results->json_encode;
+          echo json_encode($results);
           
           ");
           
