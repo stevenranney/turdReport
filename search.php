@@ -65,29 +65,60 @@ echo
       google.charts.setOnLoadCallback(drawChart);
       
       function drawChart() {
-          var data = new google.visualization.DataTable(";
+              // Create our data table.
+        data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Mushrooms', 3],
+          ['Onions', 1],
+          ['Olives', 1],
+          ['Zucchini', 1],
+          ['Pepperoni', 2]
+        ]);
+
+        // Set chart options
+        var options = {'title':'How Much Pizza I Ate Last Night',
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        google.visualization.events.addListener(chart, 'select', selectHandler);
+        chart.draw(data, options);
+      }
+
+      function selectHandler() {
+        var selectedItem = chart.getSelection()[0];
+        var value = data.getValue(selectedItem.row, 0);
+        alert('The user selected ' + value);
+      }
+
+    </script>
+    <div id='chart_div' style='width:400; height:300'></div>";
+
+//           echo json_encode($results);
           
-          echo json_encode($results);
+// echo ");
           
-          ");
-          
-          var options = {
-              chart: {
-                  title: 'Poos over time'
-                  }, 
-                  width = 900, 
-                  height: 500, 
-                  axes: {
-                      x: {
-                          0: {side:'top'}
-                         }
-                       }
-                     };
+//           var options = {
+//               chart: {
+//                   title: 'Poos over time'
+//                   }, 
+//                   width = 900, 
+//                   height: 500, 
+//                   axes: {
+//                       x: {
+//                           0: {side:'top'}
+//                          }
+//                        }
+//                      };
             
-            var chart = new google.charts.Line(document.getElementById('line_top_x'));
-            chart.draw(data, options);
-        }
-    </script>";
+//             var chart = new google.charts.Line(document.getElementById('line_top_x'));
+//             chart.draw(data, options);
+//         }
+//     </script>
+//     <div id='line_top_x'></div>";
       
 echo
     "</div>
