@@ -58,7 +58,38 @@ echo "There was no matching record for the name " . $searchTerm  . ". Please che
 echo
     "</div>
     <div class='fright'>
-    <p>image will go here.</p>
-    </div>
+    <!--Load the AJAX API-->
+    <script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
+    <script type='text/javascript'>
+      google.charts.load('current', {'packages':['line']});
+      google.charts.setOnLoadCallback(drawChart);
+      
+      function drawChart() {
+          var data = new google.visualization.DataTable(";
+          
+          echo $results->json_encode;
+          
+          ");
+          
+          var options = {
+              chart: {
+                  title: 'Poos over time'
+                  }, 
+                  width = 900, 
+                  height: 500, 
+                  axes: {
+                      x: {
+                          0: {side:'top'}
+                         }
+                       }
+                     };
+            
+            var chart = new google.charts.Line(document.getElementById('line_top_x'));
+            chart.draw(data, options);
+        }
+    </script>";
+      
+echo
+    "</div>
 </div>";
 ?> 
